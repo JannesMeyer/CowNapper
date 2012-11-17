@@ -5,50 +5,35 @@ package
  
 	public class PlayState extends FlxState
 	{
-		[Embed(source = "ufo.png")] private static var ImgUfo:Class;
-		[Embed(source = "cow.png")] private static var ImgCow:Class;
-		private var player:FlxSprite;
-		private var cow:FlxSprite;
+		private var ufo:FlxSprite;
+		private var cow:Cow;
+		private var floor:FlxTileblock;
 		
 		override public function create():void
 		{
-			//FlxG.framerate = 60;
-			//FlxG.flashFramerate = 60;
+			[Embed(source = "../assets/ufo.png")] var ImgUfo:Class;
 			
-			//add(new FlxText(0,0,100,"Hello fucked up World!")); //adds a 100px wide text field at position 0,0 (upper left)
+			FlxG.log("Starting the game");
+			//add(new FlxText(0,0,100,"Hello beautiful World!"));
 			
+			ufo = new FlxSprite(20, 15);
+			ufo.loadGraphic(ImgUfo, false, false, 27, 19);
+			add(ufo);
 			
-			player = new FlxSprite(20, 15);
-			player.loadGraphic(ImgUfo, false, false, 27, 19);
-			//player1.maxVelocity.x = 80
-			//player1.maxVelocity.y = 200
-			//player1.acceleration.y = 200
-			//player1.drag.x
-			add(player);
-			
-			cow = new FlxSprite(20, 140);
-			cow.loadGraphic(ImgCow, false, false, 28, 24);
-			cow.maxVelocity.y = 200;  // controling how the players behave
-			//cow.drag.y = cow.maxVelocity.x * 4;
+			cow = new Cow();
 			add(cow);
 			
-			
+			floor = new FlxTileblock(0, 208, 336, 32);
+			floor.makeGraphic(336, 32, 0xff689c16);
+			add(floor);
 		}
 		
 		override public function update():void {
-			if (FlxG.keys.SPACE) { //FlxG.keys.justPressed("SPACE"))
-				// Tractor beam
-				cow.acceleration.y = -100;
-			} else if (cow.y < 144) {
-				// Gravity
+			if (!FlxG.keys.SPACE) {
 				cow.acceleration.y = 100;
 			} else {
-				// Floor and ceiling
-				cow.acceleration.y = 0;
-				cow.velocity.y = 0;
+				cow.acceleration.y = -100;
 			}
-			
-
 			
 			super.update();
 		}
