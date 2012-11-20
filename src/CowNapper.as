@@ -2,7 +2,7 @@ package
 {
 
 	import org.flixel.*;
-	[SWF(width="1008", height="640", backgroundColor="#FFFFFF")]
+	[SWF(width="1008", height="600", backgroundColor="#FFFFFF")]
  
 	/**
 	 * CowNapper game
@@ -12,7 +12,7 @@ package
 	{
 		public function CowNapper()
 		{	
-			super(336, 240, PlayState, 2, 60, 60);
+			super(504, 300, PlayState, 2, 60, 60);
 			forceDebugger = true;
 			FlxG.bgColor = 0xff783629;
 		}

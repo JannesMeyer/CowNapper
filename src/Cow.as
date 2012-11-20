@@ -9,13 +9,14 @@ package
 	 */
 	public class Cow extends FlxSprite
 	{	
-		public function Cow() {
-			[Embed(source = "../assets/player.png")] var ImgCow:Class;
-			super(20, 100);
+		public function Cow(x:int, y:int) {
+			[Embed(source = "../assets/cow.png")] var ImgCow:Class;
+			super(x, y);
 			
 			//loadGraphic(ImgCow, false, false, 28, 24);
-			loadGraphic(ImgCow, true, true, 16, 18, true);
-			addAnimation("walk", [0, 1, 0, 2], 10, true);
+			loadGraphic(ImgCow, true, true, 26, 21, true);
+			addAnimation("walk", [1, 2], 6, true);
+			//scrollFactor.x = 0;
 			play("walk");
 			//maxVelocity.y = 200;  // controling how the players behave
 			//drag.y = maxVelocity.x * 4;
@@ -30,9 +31,16 @@ package
 		}
 		
 		override public function update():void {
-			if (checkEdges()) {
-				velocity.x *= -1;
-				velocity.y *= -1;
+			// Bounding the cow
+			if (y > FlxG.height - height - 2) {
+				velocity.y = 0;
+				acceleration.y = 0;
+				y = FlxG.height - height - 2;
+			}
+			if (y < 46) {
+				velocity.y = 0;
+				acceleration.y = 0;
+				y = 46;
 			}
 			
 			super.update();
