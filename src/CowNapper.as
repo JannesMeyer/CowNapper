@@ -6,7 +6,7 @@ package
  
 	/**
 	 * CowNapper game
-	 * @author Jannes Meyer
+	 * @author Jannes, Jing, Christine
 	 */
 	public class CowNapper extends FlxGame
 	{
@@ -14,7 +14,6 @@ package
 		{	
 			super(504, 300, PlayState, 2, 60, 60);
 			forceDebugger = true;
-			//FlxG.bgColor = 0xff783629;
 		}
 	}
 
