@@ -3,8 +3,7 @@ package
 	import org.flixel.FlxSprite;
 	
 	/**
-	 * ...
-	 * @author ...
+	 * Bird
 	 */
 	public class Bird extends FlxSprite 
 	{
@@ -14,7 +13,7 @@ package
 			[Embed(source = "../assets/bird.png")] var Img:Class;
 			super(x, y);
 			
-			loadGraphic(Img, true, true, 28, 24, true);
+			loadGraphic(Img, true, false, 28, 24);
 			addAnimation("fly", [0, 1], 7, true);
 			play("fly");
 		}

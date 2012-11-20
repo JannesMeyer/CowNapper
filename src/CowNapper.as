@@ -12,7 +12,7 @@ package
 	{
 		public function CowNapper()
 		{	
-			super(504, 300, PlayState, 2, 60, 60);
+			super(504, 300, MainMenuState, 2, 60, 60);
 			forceDebugger = true;
 		}
 	}

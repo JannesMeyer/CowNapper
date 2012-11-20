@@ -11,7 +11,6 @@ package
 		
 		private var focus:FlxObject;
 		private var level;
-		private var obstacles:FlxGroup;
 		private var ufo:Ufo;
 		private var cow:Cow;
 
@@ -21,7 +20,8 @@ package
 		
 		override public function create():void
 		{
-			level = new LevelFarm();
+			//level = new LevelFarm();
+			level = new LevelMars();
 			ufo = new Ufo(10, 10);
 			cow = new Cow(39, 100);
 			
@@ -31,7 +31,6 @@ package
 			
 			// Needs to be that big for collision to work properly
 			FlxG.worldBounds.width = level.getLength();
-			obstacles = level.getObstacles();
 			
 			// Camera focus
 			focus = new FlxObject(FlxG.width / 2, FlxG.height / 2);
@@ -61,7 +60,7 @@ package
 			}
 			
 			// Collision
-			if (FlxG.collide(obstacles, cow)) {
+			if (FlxG.collide(level.obstacles, cow)) {
 				FlxG.camera.shake(0.005, 0.1);
 				//FlxG.play(SoundEffect);
 			}

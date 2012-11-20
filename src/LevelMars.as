@@ -3,23 +3,23 @@ package
 	import org.flixel.*;
 	
 	/**
-	 * Farm
+	 * Mars
 	 */
-	public class LevelFarm extends FlxGroup
+	public class LevelMars extends FlxGroup 
 	{
 		public var obstacles:FlxGroup;
 		private var background:FlxTilemap;
 		private var difficulty:int = 0;
 		
-		public function LevelFarm(bare:Boolean = false) 
+		public function LevelMars() 
 		{
-			[Embed(source = "../assets/level1_tiles.png")] var BackgroundTiles:Class;
+			[Embed(source = "../assets/level2_tiles2.png")] var BackgroundTiles:Class;
 
 			super();
 			
 			// Background tiles
 			background = new FlxTilemap();
-			background.loadMap("0,1,2,0,1,2,0,1,2", BackgroundTiles, 512, 300, NaN, 0, 0);
+			background.loadMap("0,0,0", BackgroundTiles, 1500, 300, NaN, 0, 0);
 			background.scrollFactor.x = 0.5;
 			background.scrollFactor.y = 0;
 			add(background);
@@ -28,13 +28,9 @@ package
 			obstacles = new FlxGroup();
 			// TODO: How many of these to add?
 			for (var i:int; i < 200; i++) {
-				obstacles.add(new Bird(i * 20, PlayState.random(46, FlxG.height)));
+				obstacles.add(new Alien(i * 20, PlayState.random(46, FlxG.height)));
 			}
 			add(obstacles);
-		}
-		
-		public function getObstacles():FlxGroup {
-			return obstacles;
 		}
 		
 		public function getLength():int {
@@ -48,7 +44,7 @@ package
 		public function addObstacle():void {
 			
 		}
-		
+
 	}
 
 }
