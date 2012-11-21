@@ -2,6 +2,7 @@ package
 {
 
 	import org.flixel.*;
+	import states.*;
 	[SWF(width="1008", height="600", backgroundColor="#000000")]
  
 	/**
@@ -10,11 +11,16 @@ package
 	 */
 	public class CowNapper extends FlxGame
 	{
+	
 		public function CowNapper()
 		{	
 			super(504, 300, MainMenuState, 2, 60, 60);
-			forceDebugger = true;
+			
+			CONFIG::debug {
+				forceDebugger = true;
+			}
 		}
+	
 	}
 
 }
